@@ -13,7 +13,7 @@ def sinh_xau_thuan_nghich(n):
     def backtrack(i): 
         #basecase 
         if i == n : 
-            if kiem_tra_doi_xung(a) : 
+            if a == a[::-1]: 
                 print(*a)
             return # phải ngắt ngay 
         for j in [0,1]: 
