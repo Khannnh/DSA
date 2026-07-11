@@ -1,33 +1,25 @@
-#bài mà dãy con có tổng bằng k gì gì đó :))) 
 import itertools
 
-# Đọc dữ liệu đầu vào
+# 1. Đọc dữ liệu đầu vào
 n, k = map(int, input().split())
 a = list(map(int, input().split()))
 
-# Sắp xếp mảng A tăng dần để kết quả sinh ra đúng thứ tự từ điển
-a.sort()
+cac_day_con_thoa_man = []
 
-# Sinh toàn bộ xâu nhị phân độ dài N theo thứ tự giảm dần từ điển
-# Ưu tiên số 1 đứng trước số 0 để bốc các phần tử nhỏ trước
-cac_cau_hinh = itertools.product([1, 0], repeat=n)
-
-dem_day_con = 0
-
-for cau_hinh in cac_cau_hinh:
-    day_con_hien_tai = []
+# 2. Sinh cấu hình nhị phân tăng dần
+for cau_hinh in itertools.product([0, 1], repeat=n):
     tong_hien_tai = 0
     
-    # Duyệt qua từng phần tử để kiểm tra xem có được chọn không
+    # Tối ưu: Dùng biến cộng dồn trực tiếp thay vì dùng hàm sum() 
     for i in range(n):
         if cau_hinh[i] == 1:
-            day_con_hien_tai.append(a[i])
             tong_hien_tai += a[i]
             
-    # Nếu tổng bằng K thì in ra và tăng biến đếm
+    # Chỉ khi nào TỔNG THỎA MÃN thì mới tốn chi phí tạo mảng và ép chuỗi
     if tong_hien_tai == k:
-        print(*day_con_hien_tai)
-        dem_day_con += 1
+        day_con = [a[i] for i in range(n) if cau_hinh[i] == 1]
+        cac_day_con_thoa_man.append(" ".join(map(str, day_con)))
 
-# Dòng cuối cùng in ra tổng số dãy con tìm được
-print(dem_day_con)
+# 3. In kết quả 1 lần duy nhất bằng \n để tối ưu I/O
+print("\n".join(cac_day_con_thoa_man))
+print(len(cac_day_con_thoa_man))
