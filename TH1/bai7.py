@@ -1,4 +1,5 @@
 # tim xau AB do dai n chua duy nhat day k bit A lien tiep
+#DSA01009
 import itertools 
 def check(s , k): 
     target = 'A'*k
@@ -22,5 +23,4 @@ for xau in tat_ca_xau:
 
 #in ket qua 
 print(len(result))
-for s in result: 
-    print(s)
+print("\n".join(result))
