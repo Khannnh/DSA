@@ -13,4 +13,5 @@ for _ in range(t):
     # Sau khi vòng for trên chạy xong xuôi (gom hết cấu hình vào mảng res),
     # ta mới nối các phần tử trong res lại bằng dấu cách và in ra 1 lần duy nhất.
     # Lệnh print này mặc định sẽ tự Enter xuống dòng để chuẩn bị cho bộ test sau!
-    print(" ".join(res))
+    print(*res) #hoặc là print(" ".join(res)) nhưng res phải toàn chứa string
+
