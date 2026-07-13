@@ -3,7 +3,7 @@ def nhi_phan(n):
     a= [0]*n
     def backtrack(i):
         #basecase
-        if i == n :
+        if i == n : #index base 0 nên i = n là vượt quá index cuối (n-1) rồi =))))
             print(*a)
             return
 
