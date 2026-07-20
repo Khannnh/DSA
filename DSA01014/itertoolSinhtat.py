@@ -1,3 +1,4 @@
+#chạy đúng testcase nhưng TLE do sinh tất nó z :V 
 import itertools 
 while True : 
     n,k,s = list(map(int,input().split()))
