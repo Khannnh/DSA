@@ -1,19 +1,46 @@
-import itertools 
-def sangnguyento(limit): 
-    is_prime = [True]*(limit+1)
-    is_prime[0] = is_prime[1]= False
-    for i in range(2,int(limit**0.5)+1):
+def sangnguyento(limit):
+    is_prime = [True] * (limit + 1)
+    is_prime[0] = is_prime[1] = False
+    for i in range(2, int(limit ** 0.5) + 1):
         if is_prime[i]:
-            for j in range(i*i , limit+1 , i):
-                is_prime[j] = False 
-    return is_prime
+            for j in range(i * i, limit + 1, i):
+                is_prime[j] = False
 
-sang = sangnguyento(200000) #ds gồm toàn giá trị True/False 
-n,k = list(map(int, input().split()))
-cac_to_hop = itertools.combinations(range(1,n+1) , k)
-stt = 0 
-for to_hop in cac_to_hop:
-    stt +=1 
-    if sang[stt] :
-        s = " ".join(map(str , to_hop))
-        print(f"{stt}: {s}")
+    return is_prime
+def tohop(n:int, k:int, prime:list):
+    a = [0] * (k + 1)      # cấu hình (base index 1)
+    state = {"stt": 0}
+    def backtrack(i):
+        if i > k:
+            state["stt"] += 1
+            if prime[state["stt"]]:
+                s = " ".join(map(str, a[1:]))
+                print(f"{state['stt']}: {s}")
+            return
+        for j in range(a[i - 1] + 1, n - k + i + 1):
+            a[i] = j
+            backtrack(i + 1)
+    backtrack(1)
+n, k = map(int, input().split())
+prime = sangnguyento(200000)   # chỉ sàng MỘT LẦN
+tohop(n, k, prime)
+
+# import itertools 
+# def sangnguyento(limit): 
+#     is_prime = [True]*(limit+1)
+#     is_prime[0] = is_prime[1]= False
+#     for i in range(2,int(limit**0.5)+1):
+#         if is_prime[i]:
+#             for j in range(i*i , limit+1 , i):
+#                 is_prime[j] = False 
+#     return is_prime
+
+# sang = sangnguyento(200000) #ds gồm toàn giá trị True/False 
+# n,k = list(map(int, input().split()))
+# cac_to_hop = itertools.combinations(range(1,n+1) , k)
+# stt = 0 
+# for to_hop in cac_to_hop:
+#     stt +=1 
+#     if sang[stt] :
+#         s = " ".join(map(str , to_hop))
+#         print(f"{stt}: {s}")
