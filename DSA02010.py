@@ -12,7 +12,7 @@ def dfs(rem_x:int , a:list , start_ids:int ,path:list, result:list):
             break 
         path.append(a[i])
         dfs(rem_x-a[i] ,a, i , path,result) #vẫn chọn i tiếp vì có thể chọn trùng 
-        path.pop()  #khôi phục trạng thái 
+        path.pop()  #khôi phục trạng thái , lui lại 1 tầng đệ quy 
 t=int(input())
 for _ in range(t):
     N, X = map(int , input().split())
@@ -32,3 +32,5 @@ for _ in range(t):
         print("".join(map(str,out))) 
         #bài này dùng *out thì ko đc vì giữa ] và [ có dấu cách :))))
         #thế là phải dùng join 🙄
+#https://share.gemini.google/qjgg1uNJISjs
+
