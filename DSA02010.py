@@ -11,7 +11,7 @@ def dfs(rem_x:int , a:list , start_ids:int ,path:list, result:list):
         if a[i]> rem_x:
             break 
         path.append(a[i])
-        dfs(rem_x-a[i] ,a, i , path,result)
+        dfs(rem_x-a[i] ,a, i , path,result) #vẫn chọn i tiếp vì có thể chọn trùng 
         path.pop()  #khôi phục trạng thái 
 t=int(input())
 for _ in range(t):
