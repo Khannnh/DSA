@@ -1,4 +1,4 @@
-# Các hướng di chuyển
+# Các hướng di chuyển ( biến global nên để ngoài hàm tất cả truy cập đều được)
 DIRECTIONS = [
     (1, 0, 'D'),   # Down
     (0, 1, 'R')    # Right
@@ -11,7 +11,7 @@ def dfs(
     y: int,
     path: list[str],
     result: list[str]
-) -> None:
+) -> None: #hàm chỉ xào nấu thôi chứ ko trả về gì :V 
     n = len(maze)
     # 1. Base case
     if x == n - 1 and y == n - 1:
@@ -31,7 +31,7 @@ def dfs(
         # 4. Kiểm tra hợp lệ
         # Ra ngoài mê cung
         if next_x < 0 or next_x >= n:
-            continue
+            continue #(skip phương án vừa chọn để chạy vòng for thử pán khác)
         if next_y < 0 or next_y >= n:
             continue
         # Gặp tường
@@ -53,7 +53,7 @@ def dfs(
 # ==========================
 def solve(maze: list[list[int]]) -> list[str]:
     result = []
-    # Không có điểm xuất phát
+    # Nếu ô xuát phát đã là tường 
     if maze[0][0] == 0:
         return result
     dfs(
@@ -64,7 +64,6 @@ def solve(maze: list[list[int]]) -> list[str]:
         result=result
     )
     return result
-
 # Main
 t = int(input())
 for _ in range(t):
