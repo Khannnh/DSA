@@ -1,6 +1,20 @@
-#tìm bộ 3 số trong list a có tổng < k 
-#HIỆN VẪN CHƯA TÌM RA HƯỚNG NÀO AC = PYTHON :)) 
-import math , sys 
+# Nếu làm kiểu trâu bò thì ý tưởng sẽ là dùng 3 vong for: 
+# for i in (n-2) : 
+# 	for j in (i+1,n-1)
+# 		for k in (j+1,n) 
+# Nhưng với n = 5000 thì thời gian chạy 5000^3 là bất khả thi 
+# -> Si nghĩ cố định vòng for i ở ngoài cùng thôi , j và k thì biến thành 2 con trỏ left , right thu gọn đoạn từ i+1 tới n . Điều kiện để áp dụng đc 2 con trỏ là phải SORT cái mảng đã :))) 
+# for i in (n-2) 	
+# 	l = i+1 
+# 	r = n-1 (index) 
+# 	while l<r : 
+# 	tong = a[i] + a[l] + a[r] 
+# 	Nếu tong < k : 
+# 		đoạn từ l+1 -> r-1 đều thỏa mãn => ans += (r-l-1) +1 = r-l
+# 		l +=1 
+# 	Nếu tong >= k : 
+# 		r -= 1 
+
 def tong3sonhohonk(a:list ,k:int):
     ans = 0 
     n=len(a)
@@ -24,13 +38,3 @@ def tong3sonhohonk(a:list ,k:int):
             else:
                 r -= 1
     return ans 
-
-input_data = sys.stdin.read().split()
-iterator = iter(input_data)
-t=int(next(iterator))
-for _ in range(t):
-    n=int(next(iterator))
-    k=int(next(iterator))
-    a=[int(next(iterator)) for _ in range(n)]
-    a.sort() #NHẤT ĐỊNH PHẢI SORT
-    print(tong3sonhohonk(a,k))
