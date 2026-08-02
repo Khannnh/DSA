@@ -1,7 +1,7 @@
 def solve(a, x):
     n = len(a)
     res = []
-    a.sort()
+    a.sort()  #sort ngay vì lúc này là số nguyên ý 
 
     def dfs(remain, start, path):
         if remain == 0:
@@ -18,8 +18,6 @@ def solve(a, x):
 
     dfs(x, 0, [])
     return res
-
-
 t = int(input())
 
 for _ in range(t):
