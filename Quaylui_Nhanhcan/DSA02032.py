@@ -11,7 +11,6 @@ def solve(a, x):
         for i in range(start, n):
             if a[i] > remain:
                 break
-
             path.append(a[i])
             dfs(remain - a[i], i, path)
             path.pop()
