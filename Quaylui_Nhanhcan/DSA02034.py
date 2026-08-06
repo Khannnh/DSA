@@ -49,8 +49,3 @@ for _ in range(t):
         if check(x): 
             res.append("".join(map(str,x)))
     print("\n".join(res))
-
-
-
-
-
