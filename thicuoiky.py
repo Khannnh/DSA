@@ -5,9 +5,9 @@ def check(s , k):
     return False 
 res = []
 n , k = list(map(int , input().split()))
-tat_ca_xau = itertools.product([0,1] , repeat = n )
+tat_ca_xau = itertools.product(['0','1'] , repeat = n )
 for xau in tat_ca_xau:
-    s = "".join(map(str , xau))
+    s = "".join(xau)
     if check(s,k):
         res.append(s)
 print("\n".join(res))
